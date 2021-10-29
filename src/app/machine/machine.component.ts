@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Machine } from '../machine';
+import { Machine, MachineStatus } from '../machine';
 
 @Component({
   selector: 'app-machine',
@@ -9,6 +9,8 @@ import { Machine } from '../machine';
 export class MachineComponent implements OnInit {
 
   @Input() data: Machine;
+
+  MachineStatus: MachineStatus;
 
   constructor() { }
 

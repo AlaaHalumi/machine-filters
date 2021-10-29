@@ -1,27 +1,27 @@
 <div class="content">
   <div class="filters-group">
-    <button class="filter-button acceptable">
+    <button class="filter-button acceptable" (click)="filterData(0)">
       <span>  Acceptable </span>  
-      <span> (2)</span>
+      <span>  ({{getAcceptableCount()}}) </span>
     </button>
-    <button class="filter-button monitor">
+    <button class="filter-button monitor" (click)="filterData(1)">
       <span>  Monitor </span>  
-      <span> (2)</span>
+      <span> ({{getMonitorCount()}}) </span>
     </button>
-    <button class="filter-button alarm">
+    <button class="filter-button alarm" (click)="filterData(2)">
       <span>  Alarm </span>  
-      <span> (2)</span>
+      <span> ({{getAlarmCount()}}) </span>
     </button>
-    <button class="filter-button danger">
+    <button class="filter-button danger" (click)="filterData(3)">
       <span>  Danger </span>  
-      <span> (2)</span>
+      <span> ({{getDangerCount()}}) </span>
     </button>
-    <button class="filter-button">
+    <button class="filter-button" (click)="filterData(4)">
       <span>  Not Started </span>  
-      <span> (2)</span>
+      <span> ({{getNoStatusCount()}}) </span>
     </button>
   </div>
   <div>
-    <app-machine-list [dataList]="machinesList"></app-machine-list>
+    <app-machine-list [dataList]="filteredMachinesList"></app-machine-list>
   </div>
 </div>

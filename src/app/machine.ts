@@ -6,9 +6,9 @@ export interface Machine {
 }
 
 export enum MachineStatus {
-    Acceptable = 0,
-    Monitor = 1,
-    Alarm = 2,
-    Danger = 3,
-    'No Status'= 4
+    acceptable = 0,
+    monitor = 1,
+    alarm = 2,
+    danger = 3,
+    NoStatus= 4
 }

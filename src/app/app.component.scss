@@ -1,3 +1,5 @@
+@import "shared/_statusVariables";
+
 .content {
     background-color: #f0f5f9;
     padding: 40px;
@@ -9,7 +11,7 @@
 }
 
 .filter-button {
-    background-color: var(--no_status);
+    background-color: $no_status;
     font-size: 12px;
     min-width: 32px;
     line-height: 2;
@@ -19,24 +21,24 @@
     border: none;
     color: white;
     margin-right: 8px;
-}
 
-.filter-button:hover{
-    filter: brightness(var(--hover-brightness));
+    &:hover {
+        filter: brightness($hover-brightness);
+    }
 }
 
 .danger {
-    background-color: var(--danger);
+    background-color: $danger;
 }
 
 .alarm {
-    background-color: var(--alarm);
+    background-color: $alarm;
 }
 
 .monitor {
-    background-color: var(--monitor);
+    background-color: $monitor;
 }
 
 .acceptable {
-    background-color:var(--acceptable);
+    background-color: $acceptable;
 }
