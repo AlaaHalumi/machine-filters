@@ -3,10 +3,18 @@
 .machine-item {
     display: flex;
     flex-direction: column;
-    border-left: 4px solid $no_status;
     height: 80px;
     margin-bottom: 12px;
     padding: 20px;
     background-color: white;
     border-radius: 4px;
+
+    .title {
+        font-size: 20px;
+    }
+
+    .sub-title {
+        margin-top: 8px;
+        font-size: 12px;
+    }
 }

@@ -1,24 +1,10 @@
 <div class="content">
   <div class="filters-group">
-    <button class="filter-button acceptable" (click)="filterData(0)">
-      <span>  Acceptable </span>  
-      <span>  ({{getAcceptableCount()}}) </span>
-    </button>
-    <button class="filter-button monitor" (click)="filterData(1)">
-      <span>  Monitor </span>  
-      <span> ({{getMonitorCount()}}) </span>
-    </button>
-    <button class="filter-button alarm" (click)="filterData(2)">
-      <span>  Alarm </span>  
-      <span> ({{getAlarmCount()}}) </span>
-    </button>
-    <button class="filter-button danger" (click)="filterData(3)">
-      <span>  Danger </span>  
-      <span> ({{getDangerCount()}}) </span>
-    </button>
-    <button class="filter-button" (click)="filterData(4)">
-      <span>  Not Started </span>  
-      <span> ({{getNoStatusCount()}}) </span>
+    <button *ngFor="let filterButton of filterButtons" (click)="filterData(filterButton.status)" [disabled]="getCount(filterButton.status) === 0"
+            class="filter-button" [ngClass]="filterButton.filtered == true? MachineStatusEnum[filterButton.status]+'-active-filter-button active': MachineStatusEnum[filterButton.status]+'-filter-button'" >
+      <span>  {{ MachineStatusEnum[filterButton.status] }} </span>  
+      <span class="circle"></span>
+      <span class="bold">{{getCount(filterButton.status)}}</span>
     </button>
   </div>
   <div>

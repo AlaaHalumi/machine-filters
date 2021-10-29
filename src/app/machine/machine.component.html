@@ -1,9 +1,8 @@
-<div class="machine-item" >
+<div class="machine-item" [ngClass]="MachineStatus[data.status]+'-border-left'">
   <span>
     {{ data.title }}
   </span>
-  <span> 
-    Status: {{ data.status }}
+  <span class="sub-title" [ngClass]="MachineStatus[data.status]+'-text-color'"> 
+    Status: {{ MachineStatus[data.status] }}
   </span>
-  
 </div>

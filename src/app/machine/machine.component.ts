@@ -10,7 +10,7 @@ export class MachineComponent implements OnInit {
 
   @Input() data: Machine;
 
-  MachineStatus: MachineStatus;
+  MachineStatus: typeof MachineStatus = MachineStatus;
 
   constructor() { }
 

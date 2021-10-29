@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Machine } from './machine';
+import { Machine, MachineStatus } from './machine';
 import { MachineService } from './machine.service';
 
 @Component({
@@ -11,11 +11,14 @@ export class AppComponent {
 
   title = 'Machines';
 
-  filterButton = [ 
+  MachineStatusEnum: typeof MachineStatus = MachineStatus;
+
+  filterButtons = [ 
     { status: 0, filtered: false},
     { status: 1, filtered: false},
     { status: 2, filtered: false},
-    { status: 3, filtered: false}
+    { status: 3, filtered: false},
+    { status: 4, filtered: false}
   ];
 
   filteredList = [];
@@ -27,8 +30,13 @@ export class AppComponent {
   errorMessage: any = '';
 
   ngOnInit() {
+    let enumerableKeys = [];
+      for (let key in MachineStatus) {
+        enumerableKeys.push({ status: key, filtered: false});
+      }
+console.log(enumerableKeys); 
+    console.log(Object.keys(MachineStatus));
     this.getMachines();
-   // this.filteredMachinesList = this.machinesList;
   }
 
   getMachines() {
@@ -43,38 +51,37 @@ export class AppComponent {
   };
 
 
-  getAcceptableCount() {
-    return this.machinesList.filter( x => x.status === 0).length;
-  }
-  getMonitorCount() {
-    return this.machinesList.filter( x => x.status === 1).length;
-  }
-  getAlarmCount() {
-    return this.machinesList.filter( x => x.status === 2).length;
-  }
-  getDangerCount() {
-    return this.machinesList.filter( x => x.status === 3).length;
-  }
-  getNoStatusCount() {
-    return this.machinesList.filter( x => x.status === 4).length;
+  getCount(filter: number) {
+    return this.machinesList.filter( x => x.status === filter).length;
   }
 
+  filterData(number: number) {
+    const selected = this.filterButtons.find(x => x.status === number);
 
-  filterData(number) {
-    this.filterButton.find(x => x.status === number).filtered = true;
+    if (selected.filtered === false) {
+      selected.filtered = true;
+    } else {
+      selected.filtered = false;
+      const unselected = this.filteredList.indexOf(selected.status);
+      this.filteredList.splice(unselected ,1);
+    }
+  
+    const filterButtonsSelected = this.filterButtons.filter( x => x.filtered === true);
+  
+    filterButtonsSelected.forEach( item => {
+      if ( !this.filteredList.includes(item.status) && item.filtered === true) {
+        this.filteredList.push(item.status);
+      }
+    });
 
-    console.log('filter' ,this.filterButton);
+    const allUnselected = this.filterButtons.every( x=> x.filtered === false)
 
-    
-    debugger;
-    this.filteredList.push(this.filterButton.includes( x => x.filtered === true).status);
-    console.log('filteredList' ,this.filteredList);
-
-    // this.filteredMachinesList = this.machinesList.filter(
-
-    //     machine => filteredList.includes(machine.status)
-    //   );
-
-    console.log(this.filteredMachinesList);
+    if(allUnselected) {
+      this.filteredMachinesList = this.machinesList;
+    } else {
+      this.filteredMachinesList = this.machinesList.filter(
+        machine => this.filteredList.includes(machine.status)
+      );
+    }
   }
 }

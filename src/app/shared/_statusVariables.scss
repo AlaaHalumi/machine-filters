@@ -6,3 +6,43 @@ $acceptable: rgb(39, 174, 96);
 $no_status: rgb(161, 161, 161);
 
 $hover-brightness: 1.15;
+
+.danger-text-color {
+    color: $danger;
+}
+
+.alarm-text-color {
+    color: $alarm;
+}
+
+.monitor-text-color {
+    color: $monitor;
+}
+
+.acceptable-text-color {
+    color: $acceptable;
+}
+
+.noStatus-text-color {
+    color: $no_status;
+}
+
+.danger-border-left {
+    border-left: 4px solid $danger;
+}
+
+.alarm-border-left {
+    border-left: 4px solid $alarm;
+}
+
+.monitor-border-left {
+    border-left: 4px solid $monitor;
+}
+
+.acceptable-border-left {
+    border-left: 4px solid $acceptable;
+}
+
+.noStatus-border-left {
+    border-left: 4px solid $no_status;
+}

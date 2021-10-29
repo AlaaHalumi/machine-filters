@@ -10,5 +10,5 @@ export enum MachineStatus {
     monitor = 1,
     alarm = 2,
     danger = 3,
-    NoStatus= 4
+    noStatus= 4
 }

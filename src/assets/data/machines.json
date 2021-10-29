@@ -3,10 +3,13 @@
     {"id": 2, "title": "Machine2", "body": "hello1eghffhj tfgh ghweereedrf", "status": 0},
     {"id": 3, "title": "Machine3", "body": "hello1ewerereqwedsgyjuieereedrf", "status": 4},
     {"id": 4, "title": "Machine4", "body": "hello1eweereedrf", "status": 3},
-    {"id": 5, "title": "Machine5", "body": "hello1eweereedrf", "status": 1},
+    {"id": 5, "title": "Machine5", "body": "hello1eweereedrf", "status": 4},
     {"id": 6, "title": "Machine6", "body": "hello1eererererweereedrf", "status": 3},
-    {"id": 7, "title": "Machine7", "body": "hello1eweegfhgffgh reedrf", "status": 1},
+    {"id": 7, "title": "Machine7", "body": "hello1eweegfhgffgh reedrf", "status": 4},
     {"id": 8, "title": "Machine8", "body": "hello1eweereedrf", "status": 0},
     {"id": 9, "title": "Machine9", "body": "hello1eweereedrf", "status": 2},
-    {"id": 10, "title": "Machine10", "body": "hello1eweereedrf", "status": 3}
+    {"id": 10, "title": "Machine10", "body": "hello1eweereedrf", "status": 3},
+    {"id": 11, "title": "Machine11", "body": "hello1eweereedrf", "status": 0},
+    {"id": 12, "title": "Machine12", "body": "hello1eweereedrf", "status": 2},
+    {"id": 13, "title": "Machine13", "body": "hello1eweereedrf", "status": 3}
 ]

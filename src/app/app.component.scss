@@ -1,8 +1,12 @@
 @import "shared/_statusVariables";
 
+* {
+    font-family: roboto, arial;
+}
+
 .content {
-    background-color: #f0f5f9;
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
 }
 
 .filters-group {
@@ -11,34 +15,112 @@
 }
 
 .filter-button {
-    background-color: $no_status;
+    border: 1px solid $no_status;
+    color: $no_status;
     font-size: 12px;
     min-width: 32px;
     line-height: 2;
     padding: 4px 12px;
     cursor: pointer;
     border-radius: 50px;
-    border: none;
-    color: white;
     margin-right: 8px;
+    background-color: #fff;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
 
-    &:hover {
-        filter: brightness($hover-brightness);
+    &:hover, &:active {
+        &:not([disabled]) {
+            filter: brightness($hover-brightness);
+        }
+      }
+
+    &:disabled {
+        cursor:auto;
+        opacity: 0.7;
+    }
+
+    .circle {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        border-radius: 8px;
+        margin: 0px 4px;
+        background-color: $no_status;
     }
 }
 
-.danger {
-    background-color: $danger;
+.danger-filter-button {
+    color: $danger;
+    border-color: $danger;
+
+    .circle {
+        background-color: $danger;
+    }
 }
 
-.alarm {
+.alarm-filter-button {
+    color: $alarm;
+    border-color: $alarm;
+
+    .circle {
+        background-color: $alarm;
+    }
+}
+
+.monitor-filter-button {
+    color: $monitor;
+    border-color: $monitor;
+
+    .circle {
+        background-color: $monitor;
+    }
+}
+
+.acceptable-filter-button {
+    color: $acceptable;
+    border-color: $acceptable;
+
+    .circle {
+        background-color: $acceptable;
+    }
+}
+
+.danger-active-filter-button {
+    border-color: $danger;
+    background-color: $danger;
+    color: #fff;
+
+    .circle {
+        background-color: #fff;
+    }
+}
+
+.active {
+    color: #fff;
+    .circle {
+        background-color: #fff;
+    }
+}
+
+.alarm-active-filter-button {
+    border-color: $alarm;
     background-color: $alarm;
 }
 
-.monitor {
+.monitor-active-filter-button {
+    border-color: $monitor;
     background-color: $monitor;
 }
 
-.acceptable {
+.acceptable-active-filter-button {
+    border-color: $acceptable;
     background-color: $acceptable;
+}
+.noStatus-active-filter-button {
+    background-color: $no_status;
+}
+
+.bold {
+    font-weight: bold;
 }
