@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilterButton } from './core/models/filter-button';
 import { Machine } from './core/models/machine';
 import { MachineStatus } from './core/models/machine-status';
 import { MachineService } from './core/services/machine.service';
@@ -13,30 +14,20 @@ export class AppComponent {
   title = 'Machines';
 
   MachineStatusEnum: typeof MachineStatus = MachineStatus;
-
-  filterButtons = [ 
-    { status: 0, filtered: false},
-    { status: 1, filtered: false},
-    { status: 2, filtered: false},
-    { status: 3, filtered: false},
-    { status: 4, filtered: false}
-  ];
-
+  filterButtons: FilterButton[] = [];
   filteredList = [];
-
-  constructor( private _machineService: MachineService) { }
-
   machinesList: Machine[] = []; 
   filteredMachinesList: Machine[] = []; 
   errorMessage: any = '';
 
+  constructor( private _machineService: MachineService) { }
+
   ngOnInit() {
-    let enumerableKeys = [];
       for (let key in MachineStatus) {
-        enumerableKeys.push({ status: key, filtered: false});
+        this.filterButtons.push({ status: Number(key), filtered: false});
       }
-console.log(enumerableKeys); 
-    console.log(Object.keys(MachineStatus));
+      this.filterButtons = this.filterButtons.slice(0, Math.ceil(this.filterButtons.length/2) )
+
     this.getMachines();
   }
 
@@ -67,7 +58,7 @@ console.log(enumerableKeys);
       this.filteredList.splice(unselected ,1);
     }
   
-    const filterButtonsSelected = this.filterButtons.filter( x => x.filtered === true);
+    const filterButtonsSelected: FilterButton[] = this.filterButtons.filter( x => x.filtered === true);
   
     filterButtonsSelected.forEach( item => {
       if ( !this.filteredList.includes(item.status) && item.filtered === true) {
