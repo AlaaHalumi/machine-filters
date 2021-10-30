@@ -7,15 +7,10 @@ import { MachineStatus } from '../core/models/machine-status';
   templateUrl: './machine.component.html',
   styleUrls: ['./machine.component.scss']
 })
-export class MachineComponent implements OnInit {
+export class MachineComponent {
 
   @Input() data: Machine;
 
   MachineStatus: typeof MachineStatus = MachineStatus;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

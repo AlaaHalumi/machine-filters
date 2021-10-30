@@ -6,13 +6,8 @@ import { Machine } from '../core/models/machine';
   templateUrl: './machine-list.component.html',
   styleUrls: ['./machine-list.component.scss']
 })
-export class MachineListComponent implements OnInit {
+export class MachineListComponent {
 
   @Input() dataList: Machine[] = []; 
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }

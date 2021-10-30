@@ -7,19 +7,12 @@ import { MachineStatus } from '../core/models/machine-status';
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
-export class FiltersComponent implements OnInit {
+export class FiltersComponent {
 
   MachineStatusEnum: typeof MachineStatus = MachineStatus;
 
   @Input() dataFilters: FilterButton[] = [];
   @Output() clickFilterButton = new EventEmitter<void>();
-  @Input() dataCount;
-
-  constructor() { }
-
-  ngOnInit() {
-    console.log(this.dataCount);
-  }
-
+  @Input() dataCount = [];
 
 }
