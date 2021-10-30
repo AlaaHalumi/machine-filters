@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Machine, MachineStatus } from './machine';
-import { MachineService } from './machine.service';
+import { Machine } from './core/models/machine';
+import { MachineStatus } from './core/models/machine-status';
+import { MachineService } from './core/services/machine.service';
 
 @Component({
   selector: 'app-root',

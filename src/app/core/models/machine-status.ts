@@ -1,10 +1,3 @@
-export interface Machine {
-    id: number;
-    title: string;
-    body: string;
-    status: MachineStatus;
-}
-
 export enum MachineStatus {
     acceptable = 0,
     monitor = 1,

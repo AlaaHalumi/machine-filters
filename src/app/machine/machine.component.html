@@ -1,8 +1,21 @@
 <div class="machine-item" [ngClass]="MachineStatus[data.status]+'-border-left'">
-  <span>
-    {{ data.title }}
-  </span>
-  <span class="sub-title" [ngClass]="MachineStatus[data.status]+'-text-color'"> 
-    Status: {{ MachineStatus[data.status] }}
-  </span>
+  <div class="machine-data">
+    <div class="machine-formal-details">
+      <span>
+        {{ data.title }}
+      </span>
+      <span class="sub-title" [ngClass]="MachineStatus[data.status]+'-text-color'"> 
+       {{ data.statusDetail }}
+      </span>
+    </div>
+    <div class="machine-informal-details">
+      <span>Facility:  Construction</span>
+      <span>Building:  Outside</span>
+    </div>
+    
+  </div>
+  <div class="machine-graph">
+    <img src="/assets/images/machine-graph.png" alt="Machine-Graph">
+  </div>
 </div>
+

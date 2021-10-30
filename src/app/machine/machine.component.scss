@@ -1,13 +1,20 @@
 @import "../shared/_statusVariables";
 
+:host {
+    padding: 8px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
 .machine-item {
     display: flex;
-    flex-direction: column;
-    height: 80px;
-    margin-bottom: 12px;
+    height: 132px;
     padding: 20px;
     background-color: white;
     border-radius: 4px;
+    justify-content: space-between;
 
     .title {
         font-size: 20px;
@@ -16,5 +23,22 @@
     .sub-title {
         margin-top: 8px;
         font-size: 12px;
+    }
+
+    .machine-data {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .machine-formal-details, .machine-informal-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .machine-informal-details {
+            font-size: 12px;
+            color: lightslategray;
+
+        }
     }
 }
