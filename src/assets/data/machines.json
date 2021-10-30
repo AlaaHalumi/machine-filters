@@ -1,15 +1,15 @@
 [
     {"id": 1, "title": "Boom Lift", "statusDetail": "GearBox", "status": 3},
-    {"id": 2, "title": "Telehandler", "statusDetail": "Radial unbalanced", "status": 0},
+    {"id": 2, "title": "Telehandler", "statusDetail": "Radial unbalanced", "status": 1},
     {"id": 3, "title": "Scissor Lift", "statusDetail": "", "status": 4},
     {"id": 4, "title": "Single Man Lift", "statusDetail": "Gear friction", "status": 3},
     {"id": 5, "title": "Wheel Tractor-Scraper", "statusDetail": "", "status": 4},
     {"id": 6, "title": "Bulldozer", "statusDetail": "Radial unbalanced", "status": 3},
     {"id": 7, "title": "Skid Steer Loader", "statusDetail": "", "status": 4},
-    {"id": 8, "title": "Backhoe Loader", "statusDetail": "Driven Pumps", "status": 0},
+    {"id": 8, "title": "Backhoe Loader", "statusDetail": "Driven Pumps", "status": 1},
     {"id": 9, "title": "Harvester", "statusDetail": "Unbalanced", "status": 2},
     {"id": 10, "title": "Light Machine", "statusDetail": "Misaligment - Motor", "status": 3},
-    {"id": 11, "title": "Time Travel Machine", "statusDetail": "works!", "status": 0},
+    {"id": 11, "title": "Time Travel Machine", "statusDetail": "works!", "status": 1},
     {"id": 12, "title": "Asphalt Paver", "statusDetail": "Bearing Wear", "status": 2},
     {"id": 13, "title": "Articulated Hauler", "statusDetail": "Radial unbalanced", "status": 3},
     {"id": 14, "title": "Knuckleboom Loader", "statusDetail": "360-degree rotating platform", "status": 3}

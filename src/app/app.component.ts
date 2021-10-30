@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FilterButton } from './core/models/filter-button';
 import { Machine } from './core/models/machine';
 import { MachineStatus } from './core/models/machine-status';
@@ -9,26 +10,35 @@ import { MachineService } from './core/services/machine.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit {
   title = 'Machines';
 
   MachineStatusEnum: typeof MachineStatus = MachineStatus;
   filterButtons: FilterButton[] = [];
   filteredList = [];
   machinesList: Machine[] = []; 
-  filteredMachinesList: Machine[] = []; 
-  errorMessage: any = '';
+  filteredMachinesList: Machine[] = [];
 
   constructor( private _machineService: MachineService) { }
 
   ngOnInit() {
-      for (let key in MachineStatus) {
-        this.filterButtons.push({ status: Number(key), filtered: false});
-      }
-      this.filterButtons = this.filterButtons.slice(0, Math.ceil(this.filterButtons.length/2) )
-
+    this.getFilterButtons();
     this.getMachines();
+  }
+   
+  getStorageFilters() : FilterButton[]{
+    return JSON.parse(localStorage.getItem('filters'));  
+  }
+
+  saveStorageFilters(filters: FilterButton[]) {
+    return localStorage.setItem('filters', JSON.stringify(filters));
+  }
+
+  getFilterButtons() {
+    for (let key in MachineStatus) {
+      this.filterButtons.push({ status: Number(key), filtered: false});
+    }
+    this.filterButtons = this.filterButtons.slice(0, Math.ceil(this.filterButtons.length/2) );
   }
 
   getMachines() {
@@ -36,30 +46,39 @@ export class AppComponent {
       .subscribe(
             machines => {
               this.machinesList = machines;
-              this.filteredMachinesList = machines
-            }
+              this.filteredMachinesList = machines;
 
+              if(this.machinesList.length > 0 && this.filteredMachinesList.length > 0 && this.filterButtons){
+                const selectedFilters=  this.getStorageFilters();
+                if(selectedFilters) {
+                  this.filterButtons = selectedFilters;
+                }
+                this.filterData();
+              }
+            }
       );
   };
 
 
-  getCount(filter: number) {
-    return this.machinesList.filter( x => x.status === filter).length;
+  getCount(statusCounter: MachineStatus) {
+    return this.machinesList.filter( x => x.status === statusCounter).length;
   }
 
-  filterData(number: number) {
-    const selected = this.filterButtons.find(x => x.status === number);
+  filterData(selectedStatus?: MachineStatus) {
+    console.log(selectedStatus);
+    if (selectedStatus) {
+      const selected = this.filterButtons.find(x => x.status === selectedStatus);
 
-    if (selected.filtered === false) {
-      selected.filtered = true;
-    } else {
-      selected.filtered = false;
-      const unselected = this.filteredList.indexOf(selected.status);
-      this.filteredList.splice(unselected ,1);
+      if (selected.filtered === false) {
+        selected.filtered = true;
+      } else {
+        selected.filtered = false;
+        const unselect = this.filteredList.indexOf(selected.status);
+        this.filteredList.splice(unselect ,1);
+      }
     }
   
     const filterButtonsSelected: FilterButton[] = this.filterButtons.filter( x => x.filtered === true);
-  
     filterButtonsSelected.forEach( item => {
       if ( !this.filteredList.includes(item.status) && item.filtered === true) {
         this.filteredList.push(item.status);
@@ -67,7 +86,6 @@ export class AppComponent {
     });
 
     const allUnselected = this.filterButtons.every( x=> x.filtered === false)
-
     if(allUnselected) {
       this.filteredMachinesList = this.machinesList;
     } else {
@@ -75,5 +93,6 @@ export class AppComponent {
         machine => this.filteredList.includes(machine.status)
       );
     }
+    this.saveStorageFilters(this.filterButtons);
   }
 }
