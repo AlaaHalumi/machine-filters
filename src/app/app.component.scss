@@ -9,118 +9,14 @@
     flex-direction: column;
 }
 
-.filters-group {
+.filters-header {
     display: flex;
     margin-bottom: 20px;
-}
+    justify-content: space-between;
+    align-items: flex-end;
 
-.filter-button {
-    border: 2px solid $no_status;
-    color: $no_status;
-    font-size: 12px;
-    min-width: 32px;
-    line-height: 2;
-    padding: 4px 12px;
-    cursor: pointer;
-    border-radius: 50px;
-    margin-right: 8px;
-    background-color: #fff;
-    text-transform: capitalize;
-    display: flex;
-    align-items: center;
-
-    &:hover, &:active {
-        &:not([disabled]) {
-            filter: brightness($hover-brightness);
-        }
-      }
-
-    &:disabled {
-        cursor:auto;
-        opacity: 0.7;
+    .filters-total {
+        color: $no_status;
+        font-size: 12px;
     }
-
-    .circle {
-        display: inline-block;
-        width: 4px;
-        height: 4px;
-        border-radius: 8px;
-        margin: 0px 4px;
-        background-color: $no_status;
-    }
-}
-
-.danger-filter-button {
-    color: $danger;
-    border-color: $danger;
-
-    .circle {
-        background-color: $danger;
-    }
-}
-
-.alarm-filter-button {
-    color: $alarm;
-    border-color: $alarm;
-
-    .circle {
-        background-color: $alarm;
-    }
-}
-
-.monitor-filter-button {
-    color: $monitor;
-    border-color: $monitor;
-
-    .circle {
-        background-color: $monitor;
-    }
-}
-
-.acceptable-filter-button {
-    color: $acceptable;
-    border-color: $acceptable;
-
-    .circle {
-        background-color: $acceptable;
-    }
-}
-
-.danger-active-filter-button {
-    border-color: $danger;
-    background-color: $danger;
-    color: #fff;
-
-    .circle {
-        background-color: #fff;
-    }
-}
-
-.active {
-    color: #fff;
-    .circle {
-        background-color: #fff;
-    }
-}
-
-.alarm-active-filter-button {
-    border-color: $alarm;
-    background-color: $alarm;
-}
-
-.monitor-active-filter-button {
-    border-color: $monitor;
-    background-color: $monitor;
-}
-
-.acceptable-active-filter-button {
-    border-color: $acceptable;
-    background-color: $acceptable;
-}
-.noStatus-active-filter-button {
-    background-color: $no_status;
-}
-
-.bold {
-    font-weight: bold;
 }

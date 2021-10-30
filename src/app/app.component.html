@@ -1,11 +1,9 @@
 <div class="content">
-  <div class="filters-group">
-    <button *ngFor="let filterButton of filterButtons" (click)="filterData(filterButton.status)" [disabled]="getCount(filterButton.status) === 0"
-            class="filter-button" [ngClass]="filterButton.filtered == true? MachineStatusEnum[filterButton.status]+'-active-filter-button active': MachineStatusEnum[filterButton.status]+'-filter-button'" >
-      <span>  {{ MachineStatusEnum[filterButton.status] }} </span>  
-      <span class="circle"></span>
-      <span class="bold">{{getCount(filterButton.status)}}</span>
-    </button>
+  <div class="filters-header">
+    <div class="filters-group">
+      <app-filters [dataFilters]="filterButtons" (clickFilterButton)="filterData($event)" [dataCount]="getCount()"></app-filters>
+    </div>
+    <span class="filters-total"> Total Machines: {{filteredMachinesList.length}} </span>
   </div>
   <div>
     <app-machine-list [dataList]="filteredMachinesList"></app-machine-list>

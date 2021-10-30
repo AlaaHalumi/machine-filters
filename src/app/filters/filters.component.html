@@ -1,0 +1,6 @@
+<button *ngFor="let filterButton of dataFilters" (click)="clickFilterButton.emit(filterButton.status)" [disabled]="dataCount[filterButton.status] === 0"
+  class="filter-button" [ngClass]="filterButton.filtered == true? MachineStatusEnum[filterButton.status]+'-active-filter-button active': MachineStatusEnum[filterButton.status]+'-filter-button'" >
+  <span>  {{ MachineStatusEnum[filterButton.status] }} </span>  
+  <span class="circle"></span>
+  <span class="bold">  {{dataCount[filterButton.status]}} </span>
+</button>

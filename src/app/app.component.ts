@@ -1,4 +1,3 @@
-import { OnChanges } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FilterButton } from './core/models/filter-button';
 import { Machine } from './core/models/machine';
@@ -35,7 +34,7 @@ export class AppComponent implements OnInit {
   }
 
   getFilterButtons() {
-    for (let key in MachineStatus) {
+    for (let key in this.MachineStatusEnum) {
       this.filterButtons.push({ status: Number(key), filtered: false});
     }
     this.filterButtons = this.filterButtons.slice(0, Math.ceil(this.filterButtons.length/2) );
@@ -59,13 +58,15 @@ export class AppComponent implements OnInit {
       );
   };
 
-
-  getCount(statusCounter: MachineStatus) {
-    return this.machinesList.filter( x => x.status === statusCounter).length;
+  getCount() {
+    const counter = [];
+    this.filterButtons.forEach(filter => {
+      counter.push(counter[filter.status] = this.machinesList.filter( x => x.status === filter.status).length)
+    })
+    return counter;
   }
 
   filterData(selectedStatus?: MachineStatus) {
-    console.log(selectedStatus);
     if (selectedStatus) {
       const selected = this.filterButtons.find(x => x.status === selectedStatus);
 

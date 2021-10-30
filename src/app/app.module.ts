@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MachineComponent } from './machine/machine.component';
 import { MachineListComponent } from './machine-list/machine-list.component';
+import { FiltersComponent } from './filters/filters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MachineComponent,
-    MachineListComponent
+    MachineListComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,
