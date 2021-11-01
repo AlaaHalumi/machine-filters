@@ -38,7 +38,6 @@ export class AppComponent implements OnInit {
       this.filterButtons.push({ status: Number(key), filtered: false});
     }
     this.filterButtons = this.filterButtons.slice(0, Math.ceil(this.filterButtons.length/2) );
-    console.log(this.filterButtons);
   }
 
   getMachines() {
